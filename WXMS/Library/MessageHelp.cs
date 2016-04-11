@@ -3,23 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Library.Tool;
 
-namespace Model
+namespace Library
 {
-    /// <summary>
-    /// 消息处理类
-    /// </summary>
     public class MessageHelp
     {
         private static MessageHelp instance = null;
 
         /// <summary>
+        /// 储存Xml解析后的键值对
+        /// </summary>
+        private IDictionary<string, string> mDictionary = null;
+
+        /// <summary>
         /// 单例
         /// </summary>
         /// <returns></returns>
-        public static MessageHelp getInstance() 
+        public static MessageHelp getInstance()
         {
-            if (instance == null) 
+            if (instance == null)
             {
                 instance = new MessageHelp();
             }
@@ -31,10 +34,17 @@ namespace Model
         /// </summary>
         /// <param name="postStr">消息的内容 Xml格式</param>
         /// <returns></returns>
-        public string HandleMessage(string postStr) 
+        public string HandleMessage(string postStr)
         {
+            mDictionary = XmlHelp.Xml2IDictionary(postStr);
 
-            return "";
+            //回复的消息
+            string Response = "";
+            if (mDictionary.ContainsKey("MsgType")) 
+            {
+            
+            }
+            return Response;
         }
     }
 }

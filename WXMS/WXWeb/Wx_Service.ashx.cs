@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.IO;
 using System.Text;
+using Library;
 
 namespace WXWeb
 {
@@ -54,12 +55,12 @@ namespace WXWeb
         /// </summary>
         private void Handle(string postStr)
         {
-            //MessageHelp help = new MessageHelp();
-            //string responseContent = help.ReturnMessage(Encoding.UTF8.GetString(Encoding.UTF8.GetBytes(postStr)));
+            //处理完成消息 回执给微信
+            string responseContent = MessageHelp.getInstance().HandleMessage(Encoding.UTF8.GetString(Encoding.UTF8.GetBytes(postStr)));
 
-            //HttpContext.Current.Response.ContentEncoding = Encoding.UTF8;
-            //HttpContext.Current.Response.Write(responseContent);
-            //HttpContext.Current.Response.End();
+            HttpContext.Current.Response.ContentEncoding = Encoding.UTF8;
+            HttpContext.Current.Response.Write(responseContent);
+            HttpContext.Current.Response.End();
         }
 
         public bool IsReusable

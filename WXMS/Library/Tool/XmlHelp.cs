@@ -5,11 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 
-namespace Model.Tool
+namespace Library.Tool
 {
-    /// <summary>
-    /// Xml 工具类
-    /// </summary>
     class XmlHelp
     {
         /// <summary>
